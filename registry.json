@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "ui-derrick",
+  "homepage": "https://ui.derrick.rw",
+  "items": [
+    {
+      "name": "organisation-unit-tree",
+      "type": "registry:ui",
+      "title": "Organisation Unit Tree",
+      "description": "A tree component for selecting organisation units with lazy loading support",
+      "files": [
+        {
+          "path": "registry/default/ui/organisation-unit-tree.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "input",
+        "button",
+        "badge",
+        "card"
+      ]
+    }
+  ]
+}
