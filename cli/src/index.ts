@@ -103,7 +103,7 @@ function displayBanner() {
   console.log(`
 ┌────────────────────────────────────────────┐
 │                                            │
-│           Motion Primitives CLI            │
+│           Derrick UI CLI            │
 │                                            │
 │      Beautiful, animated components        │
 │          for your React projects           │
@@ -115,31 +115,31 @@ function displayBanner() {
 }
 
 program
-  .name('motion-primitives')
-  .description('CLI to add beautiful, animated components to your app')
+  .name('ui-derrick')
+  .description('CLI to add beautiful, reusable components from ui-derrick registry to your app')
   .version(packageJson.version);
 
 program
   .command('add')
   .argument('<component>', 'The component to add (e.g., accordion, text-morph)')
-  .description('Add a motion-primitives component to your project')
+  .description('Add a ui-derrick component to your project')
   .action(async (component: string) => {
     const spinner = ora(`Adding ${component}...`).start();
 
     try {
-      // Fetch the motion-primitives registry
-      const motionPrimitivesRegistry = await fetchRegistry(
+      // Fetch the ui-derrick registry
+      const uiDerrickRegistry = await fetchRegistry(
         UI_DERRICK_REGISTRY_URL
       );
-      const componentEntry = motionPrimitivesRegistry.items.find(
+      const componentEntry = uiDerrickRegistry.items.find(
         (item) => item.name === component
       );
       if (!componentEntry) {
         spinner.fail(
-          `Component "${component}" not found in motion-primitives registry`
+          `Component "${component}" not found in ui-derrick registry`
         );
         console.log(
-          '\nRun "npx motion-primitives list" to see all available components'
+          '\nRun "npx @derricknuby/ui list" to see all available components'
         );
         process.exit(1);
       }
@@ -164,7 +164,7 @@ program
         mkdirSync(TARGET_DIR, { recursive: true });
       }
 
-      // Write all files to components/motion-primitives/
+      // Write all files to components/ui-derrick/
       for (const { path, content } of allFiles) {
         const filePath = join(TARGET_DIR, path);
         writeFileSync(filePath, content);
@@ -188,7 +188,7 @@ program
           console.log('\nExample usage:');
           console.log('```jsx');
           console.log(
-            `import { ${pascalCaseName} } from '@/components/motion-primitives/${component}';`
+            `import { ${pascalCaseName} } from '@/components/ui-derrick/${component}';`
           );
           console.log('\n// Then in your JSX:');
           console.log(`<${pascalCaseName} />`);
@@ -205,24 +205,24 @@ program
 
 program
   .command('list')
-  .description('List all available motion-primitives components')
+  .description('List all available ui-derrick components')
   .action(async () => {
     const spinner = ora('Fetching components...').start();
 
     try {
-      // Fetch the motion-primitives registry
-      const motionPrimitivesRegistry = await fetchRegistry(
+      // Fetch the ui-derrick registry
+      const uiDerrickRegistry = await fetchRegistry(
         UI_DERRICK_REGISTRY_URL
       );
 
       spinner.succeed(
-        `Found ${motionPrimitivesRegistry.items.length} components`
+        `Found ${uiDerrickRegistry.items.length} components`
       );
 
       console.log('\nAvailable components:');
       console.log('====================\n');
 
-      motionPrimitivesRegistry.items.forEach((item) => {
+      uiDerrickRegistry.items.forEach((item) => {
         console.log(`${item.name} - ${item.title}`);
         if (item.description) {
           console.log(`  ${item.description}`);
@@ -234,7 +234,7 @@ program
       });
 
       console.log('\nTo add a component run:');
-      console.log('  npx motion-primitives add <component-name>');
+      console.log('  npx @derricknuby/ui add <component-name>');
     } catch (error: any) {
       spinner.fail(`Error: ${error.message || error}`);
       process.exit(1);
@@ -249,11 +249,11 @@ program.action(() => {
   );
   console.log('Available commands:');
   console.log('  add <component>  - Add a component to your project');
-  console.log('    Example: npx motion-primitives add text-morph');
+  console.log('    Example: npx @derricknuby/ui add text-morph');
   console.log('\n  list             - List all available components');
-  console.log('    Example: npx motion-primitives list');
+  console.log('    Example: npx @derricknuby/ui list');
   console.log('\n  --help           - Show help information');
-  console.log('\nDocumentation: https://github.com/ibelick/motion-primitives');
+  console.log('\nDocumentation: https://github.com/derrick-nuby/ui-derrick');
 });
 
 program.parse(process.argv);
