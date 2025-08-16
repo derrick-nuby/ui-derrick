@@ -1,12 +1,19 @@
 # UI Derrick - Custom Shadcn/UI Component Registry
 
+[![npm version](https://badge.fury.io/js/%40derricknuby%2Fui.svg)](https://www.npmjs.com/package/@derricknuby/ui)
+[![npm downloads](https://img.shields.io/npm/dm/@derricknuby/ui.svg)](https://www.npmjs.com/package/@derricknuby/ui)
+[![GitHub license](https://img.shields.io/github/license/derrick-nuby/ui-derrick.svg)](https://github.com/derrick-nuby/ui-derrick/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/derrick-nuby/ui-derrick.svg)](https://github.com/derrick-nuby/ui-derrick/stargazers)
+
 A comprehensive component registry featuring reusable React components built on top of [shadcn/ui](https://ui.shadcn.com). Share and distribute your custom components just like the official shadcn/ui library.
 
-🌐 **Live Demo**: [https://ui.derrick.rw](https://ui.derrick.rw)
+🌐 **Live Demo**: [https://ui.derrick.rw](https://ui.derrick.rw)  
+📦 **npm Package**: [@derricknuby/ui](https://www.npmjs.com/package/@derricknuby/ui)
 
 ## ✨ Features
 
-- 🎯 **Easy Installation**: Install components with `npx shadcn add`
+- 🎯 **Easy Installation**: Install components with `npx shadcn add` or our custom CLI
+- 🔧 **Custom CLI Tool**: Use `npx @derricknuby/ui@latest` for branded experience
 - 🔍 **Search Functionality**: Built-in search capabilities
 - 🌳 **Tree Components**: Advanced organization unit tree with lazy loading
 - 📱 **Responsive Design**: Mobile-first approach
@@ -16,7 +23,17 @@ A comprehensive component registry featuring reusable React components built on 
 
 ## 🚀 Quick Start
 
-### Install a Component
+### Option 1: Use Our Custom CLI (Recommended)
+
+```bash
+# Install any component with our branded CLI
+npx @derricknuby/ui@latest add organisation-unit-tree
+
+# List all available components
+npx @derricknuby/ui@latest list
+```
+
+### Option 2: Direct shadcn Installation
 
 ```bash
 npx shadcn@latest add https://ui.derrick.rw/r/organisation-unit-tree.json
@@ -66,8 +83,35 @@ A powerful tree component for displaying hierarchical organization structures.
 **Installation:**
 
 ```bash
+# Option 1: Use our custom CLI
+npx @derricknuby/ui@latest add organisation-unit-tree
+
+# Option 2: Direct shadcn command
 npx shadcn@latest add https://ui.derrick.rw/r/organisation-unit-tree.json
 ```
+
+## 🔧 Custom CLI Tool
+
+We've created a custom CLI tool for better developer experience:
+
+```bash
+# Install components with our branded CLI
+npx @derricknuby/ui@latest add <component-name>
+
+# List all available components
+npx @derricknuby/ui@latest list
+
+# Get help
+npx @derricknuby/ui@latest --help
+```
+
+**CLI Features:**
+
+- 🎯 **Automatic Setup**: Checks for shadcn/ui initialization
+- 📦 **Dependency Management**: Installs required packages automatically
+- 🔗 **Registry Dependencies**: Handles shadcn/ui component dependencies
+- 🎨 **Branded Experience**: Clean, professional CLI interface
+- ⚡ **Fast Installation**: Direct integration with your project
 
 ## 🛠️ Development
 
