@@ -1,0 +1,5 @@
+cli/
+.drafts/
+*.log
+node_modules/
+.env*
