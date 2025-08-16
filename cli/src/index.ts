@@ -13,11 +13,11 @@ const packageJson = JSON.parse(
   readFileSync(join(__dirname, '..', 'package.json'), 'utf8')
 );
 
-const MOTION_PRIMITIVES_REGISTRY_URL =
-  'https://raw.githubusercontent.com/ibelick/motion-primitives/main/public/c/registry.json';
-const MOTION_PRIMITIVES_BASE_URL =
-  'https://raw.githubusercontent.com/ibelick/motion-primitives/main/';
-const TARGET_DIR = 'components/motion-primitives';
+const UI_DERRICK_REGISTRY_URL =
+  'https://raw.githubusercontent.com/derrick-nuby/ui-derrick/develop/registry.json';
+const UI_DERRICK_BASE_URL =
+  'https://raw.githubusercontent.com/derrick-nuby/ui-derrick/develop/';
+const TARGET_DIR = 'components/ui';
 
 interface FileEntry {
   path: string;
@@ -129,7 +129,7 @@ program
     try {
       // Fetch the motion-primitives registry
       const motionPrimitivesRegistry = await fetchRegistry(
-        MOTION_PRIMITIVES_REGISTRY_URL
+        UI_DERRICK_REGISTRY_URL
       );
       const componentEntry = motionPrimitivesRegistry.items.find(
         (item) => item.name === component
@@ -154,7 +154,7 @@ program
       for (const file of componentEntry.files) {
         const content =
           file.content ||
-          (await fetchFile(`${MOTION_PRIMITIVES_BASE_URL}${file.path}`));
+          (await fetchFile(`${UI_DERRICK_BASE_URL}${file.path}`));
         const fileName = file.path.split('/').pop()!;
         allFiles.push({ path: fileName, content });
       }
@@ -212,7 +212,7 @@ program
     try {
       // Fetch the motion-primitives registry
       const motionPrimitivesRegistry = await fetchRegistry(
-        MOTION_PRIMITIVES_REGISTRY_URL
+        UI_DERRICK_REGISTRY_URL
       );
 
       spinner.succeed(
